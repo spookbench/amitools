@@ -38,8 +38,11 @@ class BootBlock(Block):
 
     def set_boot_code(self, boot_code):
         if boot_code != None:
-            self.boot_code = boot_code
-            self.valid = True
+            if len(boot_code) <= self.max_boot_code:
+                self.boot_code = boot_code
+                self.valid = True
+            else:
+                self.valid = False
         else:
             self.boot_code = None
             self.valid = True
